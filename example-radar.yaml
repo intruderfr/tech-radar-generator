@@ -1,0 +1,150 @@
+# Example Technology Radar config
+# Edit this file and run:  python tech_radar.py example-radar.yaml -o radar.html
+
+title: "Acme Corp Technology Radar"
+date: "2026-04-28"
+organization: "CIO Office"
+
+quadrants:
+  - id: techniques
+    name: Techniques
+    position: top-left
+  - id: tools
+    name: Tools
+    position: top-right
+  - id: platforms
+    name: Platforms
+    position: bottom-right
+  - id: languages
+    name: Languages & Frameworks
+    position: bottom-left
+
+rings:
+  - Adopt
+  - Trial
+  - Assess
+  - Hold
+
+entries:
+  # ----- Techniques -----
+  - name: Trunk-Based Development
+    quadrant: techniques
+    ring: Adopt
+    status: no-change
+    description: Short-lived branches merged daily; the foundation for fast CI/CD.
+  - name: Infrastructure as Code
+    quadrant: techniques
+    ring: Adopt
+    status: no-change
+    description: All cloud infra defined in Terraform/Pulumi; no console clicking.
+  - name: Internal Developer Platform
+    quadrant: techniques
+    ring: Trial
+    status: moved-in
+    description: Self-service Backstage portal exposing golden paths.
+  - name: ChatOps for incidents
+    quadrant: techniques
+    ring: Trial
+    status: new
+    description: Slack-driven incident bridge with audit log and timeline.
+  - name: AI-assisted code review
+    quadrant: techniques
+    ring: Assess
+    status: new
+    description: LLM PR review augmenting human reviewers; not replacing them.
+  - name: Manual change approval boards
+    quadrant: techniques
+    ring: Hold
+    status: moved-out
+    description: Replace with risk-based automated change records.
+
+  # ----- Tools -----
+  - name: GitHub Actions
+    quadrant: tools
+    ring: Adopt
+    status: no-change
+    description: Default CI for all repos; reusable workflows centrally maintained.
+  - name: Grafana + Prometheus
+    quadrant: tools
+    ring: Adopt
+    status: no-change
+    description: Metrics and dashboards stack of record.
+  - name: Backstage
+    quadrant: tools
+    ring: Trial
+    status: moved-in
+    description: Service catalog and developer portal; in pilot with platform team.
+  - name: Renovate Bot
+    quadrant: tools
+    ring: Adopt
+    status: moved-in
+    description: Automated dependency updates with safety policies.
+  - name: OpenTelemetry
+    quadrant: tools
+    ring: Trial
+    status: no-change
+    description: Vendor-agnostic tracing/metrics SDK; replacing proprietary agents.
+  - name: ClickOps SaaS dashboards
+    quadrant: tools
+    ring: Hold
+    status: no-change
+    description: Avoid tools that cannot be configured as code.
+
+  # ----- Platforms -----
+  - name: Kubernetes (managed)
+    quadrant: platforms
+    ring: Adopt
+    status: no-change
+    description: EKS/AKS/GKE only; no self-managed control planes.
+  - name: PostgreSQL (managed)
+    quadrant: platforms
+    ring: Adopt
+    status: no-change
+    description: Relational default; reach for it before NoSQL.
+  - name: Cloudflare Workers
+    quadrant: platforms
+    ring: Trial
+    status: new
+    description: Edge compute for low-latency public endpoints.
+  - name: Self-managed Kafka
+    quadrant: platforms
+    ring: Hold
+    status: moved-out
+    description: Operational burden too high; prefer managed Kafka or SQS/PubSub.
+  - name: On-prem VMware
+    quadrant: platforms
+    ring: Hold
+    status: no-change
+    description: Cap-and-shrink; new workloads go to cloud or k8s.
+
+  # ----- Languages & Frameworks -----
+  - name: TypeScript
+    quadrant: languages
+    ring: Adopt
+    status: no-change
+    description: Default for web and Node services.
+  - name: Python 3.12+
+    quadrant: languages
+    ring: Adopt
+    status: no-change
+    description: Default for data, automation, and internal tools.
+  - name: Go
+    quadrant: languages
+    ring: Adopt
+    status: moved-in
+    description: For high-throughput services and CLIs; idiomatic patterns documented.
+  - name: Rust
+    quadrant: languages
+    ring: Assess
+    status: new
+    description: Pilot for hot-path services where Go is not enough.
+  - name: Next.js (App Router)
+    quadrant: languages
+    ring: Trial
+    status: no-change
+    description: SSR/RSC framework of choice for new web apps.
+  - name: jQuery for new code
+    quadrant: languages
+    ring: Hold
+    status: no-change
+    description: Maintain only; do not start new projects on jQuery.
